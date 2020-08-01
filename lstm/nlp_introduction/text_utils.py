@@ -106,7 +106,6 @@ class Vocabulary(object):
     def __len__(self):
         return len(self._token_to_idx)
 
-
 class ReviewVectorizer(object):
     """ The Vectorizer which coordinates the Vocabularies and puts them to use"""
     def __init__(self, review_vocab, rating_vocab):
