@@ -3,7 +3,7 @@
 */torch_datasets/
 
 # Model
-*.pth
+*/model/*.pth
 *.pyc
 
 # Byte-compiled / optimized / DLL files
