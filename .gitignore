@@ -5,6 +5,7 @@
 # Model
 */model/*.pth
 */model/*.pkl
+*/model/*.json
 *.pyc
 
 # Byte-compiled / optimized / DLL files
