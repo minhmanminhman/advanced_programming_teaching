@@ -4,6 +4,7 @@
 
 # Model
 */model/*.pth
+*/model/*.pkl
 *.pyc
 
 # Byte-compiled / optimized / DLL files
