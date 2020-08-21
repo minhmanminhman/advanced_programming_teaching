@@ -1,7 +1,22 @@
+- [Introduction](#introduction)
+- [Value-based Methods](#value-based-methods)
+  - [Dynamic Programming](#dynamic-programming)
+    - [Policy Iteration](#policy-iteration)
+    - [Value Iteration](#value-iteration)
+  - [Temporal-difference Learning (TD(0))](#temporal-difference-learning-td0)
+    - [SARSA](#sarsa)
+    - [Q-learning](#q-learning)
+  - [Deep Q-learning (DQN)](#deep-q-learning-dqn)
+- [Policy-based Methods](#policy-based-methods)
+  - [Cross-Entropy Method](#cross-entropy-method)
+  - [Policy Gradient Method](#policy-gradient-method)
+    - [REINFORCE](#reinforce)
+    - [Actor-Critic](#actor-critic)
+
 Introduction
 ====================
 
-Tabular Solution Methods
+Value-based Methods
 =========================
 
 ## Dynamic Programming
@@ -14,7 +29,7 @@ Tabular Solution Methods
 
 With model-based assumption, we know every state and transition probabilities (or we can learn transition probabilities). Each state value implies the highest average reward that the agent can get at that state. In order to get the highest reward, we computes the value function by iterating over every state in the enviroment until convergence. The policy is then extracted from the optimal value function by taking actions leading to highest reward in average.
 
-## Temporal-difference Learning
+## Temporal-difference Learning (TD(0))
 
 Temporal-difference is a class of model-free algorithm. **Model-free** means that the agent doesn't know anything about the enviroment such as states, transition probability. It will experience the enviroment (data) by itself to find the best way to interact to get highest reward. But how will the agent interact with the enviroment? There are 2 main ways:
 
@@ -23,14 +38,20 @@ Temporal-difference is a class of model-free algorithm. **Model-free** means tha
 
 ### SARSA
 
+![SARSA Algorithm](SARSA_algo.PNG "SARSA Algorithm")
+
 ### Q-learning
 
 Q-learning is a off-policy TD algorithm.
 
 ![Value Iteration Algorithm](Q_learning.PNG "Value Iteration Algorithm")
 
-Approximation Solution Methods
+## Deep Q-learning (DQN)
+
+Policy-based Methods
 =========================
+
+## Cross-Entropy Method
 
 ## Policy Gradient Method
 
@@ -38,4 +59,4 @@ Approximation Solution Methods
 
 ### Actor-Critic
 
-## Deep Q-learning (DQN)
+
