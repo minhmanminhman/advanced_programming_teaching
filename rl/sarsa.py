@@ -7,7 +7,7 @@ GAMMA = 0.9
 ALPHA = 0.2
 TEST_EPISODES = 20
 
-class QLearningAgent:
+class SARSAAgent:
     def __init__(self):
         self.env = gym.make(ENV_NAME)
         self.state = self.env.reset()
@@ -25,25 +25,27 @@ class QLearningAgent:
         action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
         return action
 
-    def _update(self, state, action, reward, next_state):
+    def _update(self, state, action, reward, next_state, next_action):
         """Update according to Q-learning algorithm"""
-        best_next_action = np.argmax(self.qvalues[next_state])    
-        td_target = reward + GAMMA * self.qvalues[next_state][best_next_action]
+        td_target = reward + GAMMA * self.qvalues[next_state][next_action]
         td_delta = td_target - self.qvalues[state][action]
         self.qvalues[state][action] += ALPHA * td_delta
+        return next_action
     
     def train(self, env):
         total_reward = 0.0
         state = env.reset()
+        action = self.choose_action(state)
+
         while True:
-            action = self.choose_action(state)
             next_state, reward, is_done, _ = env.step(action)
             total_reward += reward
-            
-            self._update(state, action, reward, next_state)
+            next_action = self.choose_action(state)
+            self._update(state, action, reward, next_state, next_action)
             if is_done:
                 break
             state = next_state
+            action = next_action
         return total_reward
     
     def play_episode(self, env):
@@ -62,7 +64,7 @@ class QLearningAgent:
 
 if __name__ == "__main__":
     test_env = gym.make(ENV_NAME)
-    agent = QLearningAgent()
+    agent = SARSAAgent()
 
     num_episode = 0
     best_reward = 0.0

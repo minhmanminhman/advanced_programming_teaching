@@ -1,8 +1,8 @@
 import gym
 import collections
 
-# ENV_NAME = "FrozenLake-v0"
-ENV_NAME = "FrozenLake8x8-v0"      # uncomment for larger version
+ENV_NAME = "FrozenLake-v0"
+# ENV_NAME = "FrozenLake8x8-v0"      # uncomment for larger version
 GAMMA = 0.9
 TEST_EPISODES = 20
 
