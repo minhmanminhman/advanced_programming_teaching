@@ -1,6 +1,7 @@
 - [Introduction](#introduction)
 - [Value-based Methods](#value-based-methods)
   - [Dynamic Programming](#dynamic-programming)
+  - [Monte Carlo Method](#monte-carlo-method)
     - [Policy Iteration](#policy-iteration)
     - [Value Iteration](#value-iteration)
   - [Temporal-difference Learning (TD(0))](#temporal-difference-learning-td0)
@@ -8,6 +9,9 @@
     - [Q-learning](#q-learning)
   - [Deep Q-learning (DQN)](#deep-q-learning-dqn)
 - [Policy-based Methods](#policy-based-methods)
+- [discrete state, discrete action: checked](#discrete-state-discrete-action-checked)
+- [continuous state, discrete action](#continuous-state-discrete-action)
+- [continuous state, continuous action](#continuous-state-continuous-action)
   - [Cross-Entropy Method](#cross-entropy-method)
   - [Policy Gradient Method](#policy-gradient-method)
     - [REINFORCE](#reinforce)
@@ -16,12 +20,23 @@
 Introduction
 ====================
 
+Model-based: agent knows everything (MDP), state, transition probability (grid world):
+  - Know transition probability
+  - Learn transition probability
+  
+Model-free: agent learns by experience
+  - 
+
 Value-based Methods
 =========================
 
 ## Dynamic Programming
 
+## Monte Carlo Method
+
 ### Policy Iteration
+
+Trajectory: S_0, a_0, r0, s1, a1, r1, ..., s_n, a_n, r_n
 
 ### Value Iteration
 
@@ -50,6 +65,18 @@ Q-learning is a off-policy TD algorithm.
 
 Policy-based Methods
 =========================
+
+# discrete state, discrete action: checked
+
+# continuous state, discrete action
+- Cart Pole, Mountain Car
+- Method: Approximation Method by
+  -  Linear Function
+  -  Neural Network: need a lot data, iid input, target network
+
+# continuous state, continuous action
+- Policy - based
+- High variance in training steps
 
 ## Cross-Entropy Method
 

@@ -7,17 +7,25 @@ GAMMA = 0.9
 ALPHA = 0.2
 TEST_EPISODES = 20
 
+# Policy S -> A (distribution)) = [0.1, 0.2, 0.6, 0.1]
+
 class SARSAAgent:
     def __init__(self):
         self.env = gym.make(ENV_NAME)
         self.state = self.env.reset()
         self.nA = self.env.action_space.n
         self.qvalues = collections.defaultdict(lambda: np.zeros(self.nA))
-
+        # {
+         #   0: [0, 0, 0, 0],
+         #   1: [0, 0, 0, 0],
+          #  ...
+        # }
     def greedy_policy(self, state, epsilon=0.1):
         A = np.ones(self.nA, dtype=float) * epsilon / self.nA 
+        # [0.9, 0.03, 0.03, 0.03]
         best_action = np.argmax(self.qvalues[state])
-        A[best_action] += (1.0 - epsilon)
+        # np.argmax([10, 1, 2, 3]) -> 0
+        A[best_action] += (1.0 - epsilon) # 0.025 + 1 - 0.1 = 0.925
         return A
     
     def choose_action(self, state):
@@ -30,7 +38,6 @@ class SARSAAgent:
         td_target = reward + GAMMA * self.qvalues[next_state][next_action]
         td_delta = td_target - self.qvalues[state][action]
         self.qvalues[state][action] += ALPHA * td_delta
-        return next_action
     
     def train(self, env):
         total_reward = 0.0
